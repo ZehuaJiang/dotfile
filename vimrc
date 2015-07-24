@@ -75,6 +75,7 @@ Plugin 'gmarik/Vundle.vim'
 """ 安装自己的插件
 Plugin 'AutoClose'
 Plugin 'UltiSnips'
+Plugin 'honza/vim-snippets'
 Plugin 'ShowTrailingWhitespace'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/syntastic'
