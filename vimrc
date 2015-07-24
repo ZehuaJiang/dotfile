@@ -63,6 +63,10 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif                         
 let g:ycm_collect_identifiers_from_comments_and_strings = 0                        " 注释和字符串中的文字也会被收入补全
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
 
+"Utilsnipt
+let g:UltiSnipsExpandTrigger="<CR>"
+let g:UltiSnipsJumpForwardTrigger="<C-j>"
+let g:UltiSnipsJumpBackwardTrigger="<C-j>"
 
 """ 安装并配置Vundle
 set nocompatible
