@@ -13,18 +13,20 @@ noremap <leader>d <C-w>l
 nnoremap nt :NERDTree<CR>
 nnoremap <Leader>v :vsplit<CR>
 
-
 """ 颜色配置
 syntax enable
 set background=dark
 colorscheme solarized
+let g:solarized_termtrans  = 1
+let g:solarized_termcolors = 256
+let g:solarized_contrast   = "high"
+let g:solarized_visibility = "high"
 
 """ 配置tab键
 set tabstop=4        "number of visual spaces per TAB
 set softtabstop=4    "number of spaces in TAB when editing
 set expandtab        "TABS are spaces
 set shiftwidth=4     "使用每层缩进的空格数
-
 
 """UI设置
 set laststatus=2     "Always show status line 
@@ -42,7 +44,6 @@ set ignorecase   "搜索时忽略大小写
 set incsearch    "search as characters are entered
 set hlsearch     "highlight mathes ":nohlsearch stop highlight searching
 
-
 """ 折叠设置
 set foldenable         
 set foldmethod=indent 
@@ -50,7 +51,7 @@ set foldlevel=10                         "折叠层数
 
 """浏览文件
 nnoremap mr :MR<CR>
-let NERDTreeIgnore=['\.pyc$', '\~$']
+let NERDTreeIgnore=['\.pyc$', '\~$', '\.$']
 
 """YouCompleteMe
 let g:ycm_cache_omnifunc=0                                                         " 禁止缓存匹配项,每次都重新生成匹配项
@@ -63,10 +64,19 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif                         
 let g:ycm_collect_identifiers_from_comments_and_strings = 0                        " 注释和字符串中的文字也会被收入补全
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
 
-"Utilsnipt
+"""Utilsnipt
 let g:UltiSnipsExpandTrigger="<CR>"
 let g:UltiSnipsJumpForwardTrigger="<C-j>"
 let g:UltiSnipsJumpBackwardTrigger="<C-j>"
+
+"""Easymotion
+map s <Plug>(easymotion-prefix)
+nmap r <Plug>(easymotion-s2)
+nmap t <Plug>(easymotion-t2)
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+map  n <Plug>(easymotion-next)
+map  N <Plug>(easymotion-prev)
 
 """ 安装并配置Vundle
 set nocompatible
@@ -77,7 +87,8 @@ Plugin 'gmarik/Vundle.vim'
 
 
 """ 安装自己的插件
-Plugin 'AutoClose'
+Plugin 'easymotion/vim-easymotion'
+Bundle 'Auto-Pairs'
 Plugin 'UltiSnips'
 Plugin 'honza/vim-snippets'
 Plugin 'ShowTrailingWhitespace'
