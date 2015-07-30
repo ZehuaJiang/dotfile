@@ -30,7 +30,7 @@ set shiftwidth=4     "使用每层缩进的空格数
 
 """UI设置
 set laststatus=2     "Always show status line 
-"set number          "show line number
+set number          "show line number
 set cursorline      "highlight the current line
 set wildmenu         "visual autocomplete for command menu
 set lazyredraw       "redraw only whn we need to
@@ -65,18 +65,18 @@ let g:ycm_collect_identifiers_from_comments_and_strings = 0                     
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
 
 """Utilsnipt
-let g:UltiSnipsExpandTrigger="<CR>"
+" let g:UltiSnipsExpandTrigger="<CR>"
 let g:UltiSnipsJumpForwardTrigger="<C-j>"
 let g:UltiSnipsJumpBackwardTrigger="<C-j>"
 
 """Easymotion
-map s <Plug>(easymotion-prefix)
-nmap r <Plug>(easymotion-s2)
-nmap t <Plug>(easymotion-t2)
-map  / <Plug>(easymotion-sn)
-omap / <Plug>(easymotion-tn)
-map  n <Plug>(easymotion-next)
-map  N <Plug>(easymotion-prev)
+" map s <Plug>(easymotion-prefix)
+nmap s <Plug>(easymotion-s2)
+" nmap t <Plug>(easymotion-t2)
+" map  / <Plug>(easymotion-sn)
+" omap / <Plug>(easymotion-tn)
+" map  n <Plug>(easymotion-next)
+" map  N <Plug>(easymotion-prev)
 
 """ 安装并配置Vundle
 set nocompatible

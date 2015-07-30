@@ -11,6 +11,9 @@ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 mkdir $HOME/.vim/UltiSnips
 cp python.snippets $HOME/.vim/UltiSnips
 
+# install decepency of tagbar
+apt-get install -y ctags
+
 # install tools to make youcompleteme 
 apt-get install -y build-essential cmake python-dev
 
