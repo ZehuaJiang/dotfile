@@ -29,7 +29,7 @@ set expandtab        "TABS are spaces
 set shiftwidth=4     "使用每层缩进的空格数
 
 """UI设置
-set laststatus=2     "Always show status line 
+set laststatus=2     "Always show status line
 set number          "show line number
 set cursorline      "highlight the current line
 set wildmenu         "visual autocomplete for command menu
@@ -45,8 +45,8 @@ set incsearch    "search as characters are entered
 set hlsearch     "highlight mathes ":nohlsearch stop highlight searching
 
 """ 折叠设置
-set foldenable         
-set foldmethod=indent 
+set foldenable
+set foldmethod=indent
 set foldlevel=10                         "折叠层数
 
 """浏览文件
@@ -92,7 +92,7 @@ Bundle 'Auto-Pairs'
 Plugin 'UltiSnips'
 Plugin 'honza/vim-snippets'
 Plugin 'ShowTrailingWhitespace'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/syntastic'
 Plugin 'uguu-org/vim-matrix-screensaver'
 Plugin 'tpope/vim-fugitive'
@@ -107,6 +107,6 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'mru.vim'
 
 """ 结束Vundle配置
-call vundle#end()          
+call vundle#end()
 filetype plugin indent on
 
