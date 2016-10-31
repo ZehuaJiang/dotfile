@@ -128,14 +128,29 @@ let g:checklist_use_timestamps = 0
 
 """ 配置ctrpl
 "use ag as the ctrlp command
-let g:ctrlp_user_command = 'ag %s -l --nocolor --nogroup --hidden 
-			\ --ignore .git 
-			\ --ignore out 
-			\ --ignore .svn 
-			\ --ignore .hg 
+let g:ctrlp_user_command = 'ag %s -l --nocolor --nogroup --hidden
+			\ --ignore .git
+			\ --ignore out
+			\ --ignore .svn
+			\ --ignore .hg
 			\ --ignore .DS_Store
 			\ -g ""'
 
+""" 配置easymotioon
+" 忽略大小写
+let g:EasyMotion_smartcase = 0
+
+" 映射反斜杠为easymotion全局搜索
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+
+" n, N 向前、向后跳转
+" map  n <Plug>(easymotion-next)
+" map  N <Plug>(easymotion-prev)
+
+" 映射搜索两个字符的快捷键
+nmap s <Plug>(easymotion-s2)   " 全局搜索
+nmap t <Plug>(easymotion-t2)   " 向下搜索
 
 """ 安装并配置Vundle
 set nocompatible
