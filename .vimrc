@@ -64,7 +64,8 @@ let NERDTreeIgnore=['\.pyc$', '\~$', '\.$']
 let g:tagbar_ctags_bin='/usr/local/bin/ctags'
 
 """ 配置 youcompleteme
-"let g:ycm_collect_identifiers_from_comments_and_strings = 1
+" config python interpreter
+"let g:ycm_python_binary_path = '~/.env/bin/python'
 
 " "GOTO Subcommands"
 " These commands are useful for jumping around and exploring code.
@@ -109,11 +110,11 @@ let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 
 " YCM will use the value of this option as the symbol
 " for errors in the Vim gutter
-let g:ycm_error_symbol = 'xx'
+let g:ycm_error_symbol = 'x'
 
 " YCM will use the value of this option as the symbol
 " for warnings in the Vim gutter
-let g:ycm_warning_symbol = '!!'
+let g:ycm_warning_symbol = '!'
 
 " This option controls the key mappings used to
 " select the first completion string
@@ -185,7 +186,6 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'mru.vim'
 Plugin 'checklist.vim'
 Plugin 'hynek/vim-python-pep8-indent'
-Plugin 'rdnetto/YCM-Generator'
 Bundle 'chase/vim-ansible-yaml'
 Plugin 'fatih/vim-go'
 

@@ -4,7 +4,7 @@ import fnmatch
 import logging
 import ycm_core
 import re
-
+MAC_PATH="/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/"
 BASE_FLAGS = [
         '-Wall',
         '-Wextra',
@@ -14,10 +14,12 @@ BASE_FLAGS = [
         '-fexceptions',
         '-ferror-limit=10000',
         '-DNDEBUG',
-        '-std=c++11',
-        '-xc++',
+        '-std=c99',
+        '-stdlib=libc++',
+        '-xc',
         '-I/usr/lib/',
-        '-I/usr/include/'
+        '-I/usr/include/',
+        '-I%s'%MAC_PATH,
         ]
 
 SOURCE_EXTENSIONS = [
