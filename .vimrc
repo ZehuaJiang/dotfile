@@ -64,6 +64,7 @@ let NERDTreeIgnore=['\.pyc$', '\~$', '\.$']
 let g:tagbar_ctags_bin='/usr/local/bin/ctags'
 
 """ 配置 youcompleteme
+"let g:ycm_collect_identifiers_from_comments_and_strings = 1
 
 " "GOTO Subcommands"
 " These commands are useful for jumping around and exploring code.
@@ -104,7 +105,7 @@ let g:ycm_filetype_blacklist = {
 let g:ycm_min_num_of_chars_for_completion = 3
 
 "Normally, YCM searches for a .ycm_extra_conf.py file for compilation flags
-let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"
+let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 
 " YCM will use the value of this option as the symbol
 " for errors in the Vim gutter
@@ -186,6 +187,7 @@ Plugin 'checklist.vim'
 Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'rdnetto/YCM-Generator'
 Bundle 'chase/vim-ansible-yaml'
+Plugin 'fatih/vim-go'
 
 """ 结束Vundle配置
 call vundle#end()
