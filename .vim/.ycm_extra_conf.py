@@ -15,7 +15,6 @@ BASE_FLAGS = [
         '-ferror-limit=10000',
         '-DNDEBUG',
         '-std=c99',
-        '-stdlib=libc++',
         '-xc',
         '-I/usr/lib/',
         '-I/usr/include/',
@@ -155,6 +154,8 @@ def FlagsForFile(filename):
         include_flags = FlagsForInclude(root)
         if include_flags:
             final_flags = final_flags + include_flags
+        with open("out1.txt", "w") as f:
+            f.write(str(final_flags))
     return {
             'flags': final_flags,
             'do_cache': True
