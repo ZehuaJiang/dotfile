@@ -4,3 +4,8 @@ yum install -y  epel-release \
     vim \
     rsync \
     rpm-build \
+    parted \
+    lsof \
+    tcpdump \
+    strace \
+    ansible
