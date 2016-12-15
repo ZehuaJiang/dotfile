@@ -9,3 +9,7 @@ yum install -y  epel-release \
     tcpdump \
     strace \
     ansible
+
+pip install ansible \
+    sphinx \
+    watchdog
