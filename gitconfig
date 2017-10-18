@@ -1,0 +1,22 @@
+[core]
+	editor = vim
+[user]
+	email = jiangzehua12@gmail.com
+	name = zehua
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+[i18n]
+	commitencoding = utf-8
+	logoutputencoding = uft-8
+
+[alias]  
+    br = branch  
+    st = status  
+    ck = checkout
+    pl = pull
+    ps = push
+    cm = commit
+    df = diff
+
