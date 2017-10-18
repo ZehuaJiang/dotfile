@@ -1,4 +1,3 @@
-
 """设置编辑
 set backspace=2
 set encoding=utf-8
@@ -6,20 +5,33 @@ set autoread                 "reload files when changed on disk
 
 """快捷键
 let mapleader="'"
-nnoremap q :q<CR>
-noremap <leader>a <C-w>h
-noremap <leader>s <C-w>j
-noremap <leader>w <C-w>k
-noremap <leader>d <C-w>l
+nnoremap q :close<CR>
 nnoremap nt :NERDTree<CR>
-nnoremap <Leader>e :vsplit<CR>
-nnoremap <Leader>r :split<CR>
-nnoremap <Leader>t :Tagbar<CR>
+nnoremap vs :vsplit<CR>
+nnoremap sp :split<CR>
+
+nnoremap tg :Tagbar<CR>
+nnoremap tt :tabnew<CR>
+nnoremap tn :tabnext<CR>
+nnoremap tp :tabprevious<CR>
+
+" nnoremap bb :enew<cr>
+" nnoremap bn :bnext<CR>
+" nnoremap bp :bprevious<CR>
+" nnoremap bl :ls<CR>
+
+nnoremap <leader>a <C-w>h
+nnoremap <leader>s <C-w>j
+nnoremap <leader>w <C-w>k
+nnoremap <leader>d <C-w>l
+nnoremap <Leader>f <C-]>
+nnoremap <Leader>b <C-T>
+
 
 """ 颜色配置
 syntax enable
 " set background=dark
-" colorscheme solarized
+colorscheme molokai
 " let g:solarized_termtrans  = 1
 " let g:solarized_termcolors = 256
 " let g:solarized_contrast   = "high"
@@ -40,7 +52,7 @@ set cursorline       "highlight the current line
 set wildmenu         "visual autocomplete for command menu
 set lazyredraw       "redraw only whn we need to
 set ruler            "显示光标当前位置
-"set cursorcolumn     "高亮当前的列
+set cursorcolumn     "高亮当前的列
 set numberwidth=3   "行号栏的宽度
 filetype indent on   "load filetype-specific indent file.
 
@@ -51,32 +63,54 @@ set incsearch    "search as characters are entered
 set hlsearch     "highlight mathes ":nohlsearch stop highlight searching
 set showmatch        "highlight macthing [{()}]
 
-""" 折叠设置
-set foldenable
+""" 折叠设置 set foldenable
 set foldmethod=indent
 set foldlevel=10                         "折叠层数
+
+""" 配置ale
+
+" Put this in vimrc or a plugin file of your own.
+" After this is configured, :ALEFix will try and fix your JS code with ESLint.
+let g:ale_fixers = {
+\   'python': ['flake8'],
+\}
+
+" Set this setting in vimrc if you want to fix files automatically on save.
+" This is off by default.
+" let g:ale_fix_on_save = 1
 
 """浏览文件
 nnoremap mr :MR<CR>
 let NERDTreeIgnore=['\.pyc$', '\~$', '\.$']
+
+"""配置语法检查
+" 每次写入文件时自动检查pep8
+" autocmd BufWritePost *.py call Flake8()
+" 在文件中显示mark
+" let g:flake8_show_in_file=1 
+" let g:flake8_show_quickfix=0
 
 """ 配置tagbar
 let g:tagbar_ctags_bin='/usr/local/bin/ctags'
 
 """ 配置 youcompleteme
 " config python interpreter
-"let g:ycm_python_binary_path = '~/.env/bin/python'
+
+"""
+" set ycm log
+let g:ycm_keep_logfiles = 1
+let g:ycm_log_level = 'debug'
 
 " "GOTO Subcommands"
 " These commands are useful for jumping around and exploring code.
 " When moving the cursor, the subcommands add entries to Vim's jumplist
 " so you can use "CTRL-O" to jump back to where you where before
 " invoking the command (and "CTRL-I" to jump forward; see :h jumplist for details)
-
 " This command tries to perform the "most sensible" GoTo operation it can.
 " Currently, this means that it tries to look up the symbol under the cursor
 " and jumps to its definition if possible; if the definition is not accessible
 " from the current translation unit, jumps to the symbol's declaration
+nnoremap <leader>f :YcmCompleter GoTo<CR>
 nnoremap <leader>g :YcmCompleter GoTo<CR>
 
 " This command attempts to find all of the references within the project to
@@ -85,7 +119,7 @@ nnoremap <leader>g :YcmCompleter GoTo<CR>
 
 " This option controls the key mapping used to
 " invoke the completion menu for semantic completion
-let g:ycm_key_invoke_completion = "<C-Space>"
+let g:ycm_key_invoke_completion = '<TAB>'
 
 "for which Vim filetypes (see :h filetype) should YCM be turned off
 let g:ycm_filetype_blacklist = {
@@ -106,7 +140,7 @@ let g:ycm_filetype_blacklist = {
 let g:ycm_min_num_of_chars_for_completion = 3
 
 "Normally, YCM searches for a .ycm_extra_conf.py file for compilation flags
-let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
+let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf_c.py"
 
 " YCM will use the value of this option as the symbol
 " for errors in the Vim gutter
@@ -124,21 +158,24 @@ let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
 "  select the previous completion string
 let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>']
 
+let g:ycm_show_diagnostics_ui = 1
+
 """  配置checklist
 " dis­able timestamps, add this to your .vimrc:
 let g:checklist_use_timestamps = 0
 
 """ 配置ctrpl
-"use ag as the ctrlp command
-let g:ctrlp_user_command = 'ag %s -l --nocolor --nogroup --hidden
-			\ --ignore .git
-			\ --ignore out
-			\ --ignore .svn
-			\ --ignore .hg
-			\ --ignore .DS_Store
-			\ -g ""'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site)$',
+  \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
+  \}
 
 """ 配置easymotioon
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+ 
+" 搜索两个字符
+nmap s <Plug>(easymotion-overwin-f2)
+
 " 忽略大小写
 let g:EasyMotion_smartcase = 0
 
@@ -146,13 +183,26 @@ let g:EasyMotion_smartcase = 0
 map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
 
-" n, N 向前、向后跳转
-" map  n <Plug>(easymotion-next)
-" map  N <Plug>(easymotion-prev)
+""" 配置indentLine
+let g:indentLine_enabled = 1 "默认开启
 
-" 映射搜索两个字符的快捷键
-nmap s <Plug>(easymotion-s2)   " 全局搜索
-nmap t <Plug>(easymotion-t2)   " 向下搜索
+""" 配置airline
+" Enable the list of buffers
+let g:airline#extensions#tabline#enabled = 1
+" Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t'
+
+""" 配置syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 0
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+"对python文件进行语法检查时会卡顿
+let g:syntastic_ignore_files=[".*\.py$"]
 
 """ 安装并配置Vundle
 set nocompatible
@@ -160,34 +210,54 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
-
-
 """ 安装自己的插件
+
+" 快速移动神器和模糊搜索
 Plugin 'easymotion/vim-easymotion'
-Plugin 'mattn/emmet-vim'
-Bundle 'Auto-Pairs'
-Plugin 'UltiSnips'
-Plugin 'honza/vim-snippets'
-Plugin 'gregsexton/MatchTag'
-Plugin 'ShowTrailingWhitespace'
-Plugin 'scrooloose/syntastic'
-Plugin 'uguu-org/vim-matrix-screensaver'
-Plugin 'tpope/vim-fugitive'
+" 目录显示
 Plugin 'scrooloose/nerdtree'
-Plugin 'tomtom/tcomment_vim'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'majutsushi/tagbar'
-Plugin 'kien/ctrlp.vim'
-Plugin 'godlygeek/tabular'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'tpope/vim-markdown'
-Plugin 'Lokaltog/vim-powerline'
+" vim solarized主题
 Plugin 'altercation/vim-colors-solarized'
+" 漂亮的vim状态栏
+Plugin 'vim-airline/vim-airline'
+" 支持模糊搜索文件和目录
+Plugin 'kien/ctrlp.vim'
+" 在插入模式下使用tab进行补全
+Plugin 'ervandew/supertab'
+" 史上最好用的补全插件
+Plugin 'Valloric/YouCompleteMe'
+" 使用'.'重复上一次命令
+Plugin 'tpope/vim-repeat'
+" 根据文件类型快速注释
+Plugin 'tomtom/tcomment_vim'
+" 垂直显示对齐条
+Plugin 'yggdroot/indentline'
+" 满屏幕的黑客帝国
+Plugin 'uguu-org/vim-matrix-screensaver'
+" 显示代码outline
+Plugin 'majutsushi/tagbar'
+" 显示最近使用过的文件
 Plugin 'mru.vim'
-Plugin 'checklist.vim'
-Plugin 'hynek/vim-python-pep8-indent'
-Bundle 'chase/vim-ansible-yaml'
-Plugin 'fatih/vim-go'
+" 强大的文件搜索
+Plugin 'rking/ag.vim'
+
+" 支持dash查询
+Plugin 'rizzatti/dash.vim'
+
+" 多行编辑
+Plugin 'terryma/vim-multiple-cursors'
+
+" 自动补全括号
+Plugin 'jiangmiao/auto-pairs'
+
+" vim git集成工具
+Plugin 'tpope/vim-fugitive.git'
+
+"python 自动缩进
+Plugin 'vim-scripts/indentpython.vim'
+
+"异步语法检查
+Plugin 'w0rp/ale'
 
 """ 结束Vundle配置
 call vundle#end()
