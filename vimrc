@@ -15,11 +15,6 @@ nnoremap tt :tabnew<CR>
 nnoremap tn :tabnext<CR>
 nnoremap tp :tabprevious<CR>
 
-" nnoremap bb :enew<cr>
-" nnoremap bn :bnext<CR>
-" nnoremap bp :bprevious<CR>
-" nnoremap bl :ls<CR>
-
 nnoremap <leader>a <C-w>h
 nnoremap <leader>s <C-w>j
 nnoremap <leader>w <C-w>k
@@ -53,12 +48,12 @@ set wildmenu         "visual autocomplete for command menu
 set lazyredraw       "redraw only whn we need to
 set ruler            "显示光标当前位置
 set cursorcolumn     "高亮当前的列
-set numberwidth=3   "行号栏的宽度
+set numberwidth=1   "行号栏的宽度
 filetype indent on   "load filetype-specific indent file.
 
 
 """ 搜索设置
-"set ignorecase   "搜索时忽略大小写
+set ignorecase   "搜索时忽略大小写
 set incsearch    "search as characters are entered
 set hlsearch     "highlight mathes ":nohlsearch stop highlight searching
 set showmatch        "highlight macthing [{()}]
@@ -67,31 +62,23 @@ set showmatch        "highlight macthing [{()}]
 set foldmethod=indent
 set foldlevel=10                         "折叠层数
 
-""" 配置ale
+""" 配置ale, 需要安装flake8,yapf,isort命令
+let g:ale_enabled = 1
+let g:ale_sign_column_always = 1
+let g:ale_set_highlights = 1
+let g:ale_fix_on_save = 1
 
-" Put this in vimrc or a plugin file of your own.
-" After this is configured, :ALEFix will try and fix your JS code with ESLint.
 let g:ale_fixers = {
-\   'python': ['flake8'],
+\   'python': ['isort', 'remove_trailing_lines', 'yapf'],
 \}
 
-" Set this setting in vimrc if you want to fix files automatically on save.
-" This is off by default.
-" let g:ale_fix_on_save = 1
 
 """浏览文件
 nnoremap mr :MR<CR>
 let NERDTreeIgnore=['\.pyc$', '\~$', '\.$']
 
-"""配置语法检查
-" 每次写入文件时自动检查pep8
-" autocmd BufWritePost *.py call Flake8()
-" 在文件中显示mark
-" let g:flake8_show_in_file=1 
-" let g:flake8_show_quickfix=0
-
 """ 配置tagbar
-let g:tagbar_ctags_bin='/usr/local/bin/ctags'
+let g:tagbar_ctags_bin='/usr/bin/ctags'
 
 """ 配置 youcompleteme
 " config python interpreter
@@ -99,7 +86,6 @@ let g:tagbar_ctags_bin='/usr/local/bin/ctags'
 """
 " set ycm log
 let g:ycm_keep_logfiles = 1
-let g:ycm_log_level = 'debug'
 
 " "GOTO Subcommands"
 " These commands are useful for jumping around and exploring code.
@@ -192,18 +178,6 @@ let g:airline#extensions#tabline#enabled = 1
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
 
-""" 配置syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 0
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-"对python文件进行语法检查时会卡顿
-let g:syntastic_ignore_files=[".*\.py$"]
-
 """ 安装并配置Vundle
 set nocompatible
 filetype off
@@ -214,30 +188,43 @@ Plugin 'gmarik/Vundle.vim'
 
 " 快速移动神器和模糊搜索
 Plugin 'easymotion/vim-easymotion'
+
 " 目录显示
 Plugin 'scrooloose/nerdtree'
+
 " vim solarized主题
 Plugin 'altercation/vim-colors-solarized'
+
 " 漂亮的vim状态栏
 Plugin 'vim-airline/vim-airline'
+
 " 支持模糊搜索文件和目录
 Plugin 'kien/ctrlp.vim'
+
 " 在插入模式下使用tab进行补全
 Plugin 'ervandew/supertab'
+
 " 史上最好用的补全插件
 Plugin 'Valloric/YouCompleteMe'
+
 " 使用'.'重复上一次命令
 Plugin 'tpope/vim-repeat'
+
 " 根据文件类型快速注释
 Plugin 'tomtom/tcomment_vim'
+
 " 垂直显示对齐条
 Plugin 'yggdroot/indentline'
+
 " 满屏幕的黑客帝国
 Plugin 'uguu-org/vim-matrix-screensaver'
+
 " 显示代码outline
 Plugin 'majutsushi/tagbar'
+
 " 显示最近使用过的文件
 Plugin 'mru.vim'
+
 " 强大的文件搜索
 Plugin 'rking/ag.vim'
 
@@ -258,6 +245,12 @@ Plugin 'vim-scripts/indentpython.vim'
 
 "异步语法检查
 Plugin 'w0rp/ale'
+
+" python 格式化工具
+Plugin 'google/yapf'
+
+" Vim python-mode. PyLint, Rope, Pydoc, breakpoints from box
+Plugin 'python-mode/python-mode'
 
 """ 结束Vundle配置
 call vundle#end()
