@@ -1,6 +1,7 @@
 """设置编辑
 set backspace=2
 set encoding=utf-8
+set enc=utf8
 set autoread                 "reload files when changed on disk
 
 """快捷键
@@ -25,7 +26,7 @@ nnoremap <Leader>b <C-T>
 
 """ 颜色配置
 syntax enable
-" set background=dark
+"  set background=dark
 colorscheme molokai
 " let g:solarized_termtrans  = 1
 " let g:solarized_termcolors = 256
@@ -66,10 +67,14 @@ set foldlevel=10                         "折叠层数
 let g:ale_enabled = 1
 let g:ale_sign_column_always = 1
 let g:ale_set_highlights = 1
-let g:ale_fix_on_save = 1
+" let g:ale_fix_on_save = 1
 
 let g:ale_fixers = {
-\   'python': ['isort', 'remove_trailing_lines', 'yapf'],
+\   'python': ['remove_trailing_lines', 'black'],
+\}
+
+let g:ale_linters = {
+\   'python': ['flake8'],
 \}
 
 
@@ -80,8 +85,18 @@ let NERDTreeIgnore=['\.pyc$', '\~$', '\.$']
 """ 配置tagbar
 let g:tagbar_ctags_bin='/usr/bin/ctags'
 
+""" config jedi
+let g:jedi#goto_command = "<leader>g"
+let g:jedi#goto_definitions_command = "<leader>g"
+" let g:jedi#goto_assignments_command = "<leader>f"
+let g:jedi#documentation_command = "K"
+let g:jedi#usages_command = "<leader>n"
+" let g:jedi#completions_command = "<C-Space>"
+let g:jedi#rename_command = "<leader>r"
+
+
+
 """ 配置 youcompleteme
-" config python interpreter
 
 """
 " set ycm log
@@ -96,8 +111,8 @@ let g:ycm_keep_logfiles = 1
 " Currently, this means that it tries to look up the symbol under the cursor
 " and jumps to its definition if possible; if the definition is not accessible
 " from the current translation unit, jumps to the symbol's declaration
-nnoremap <leader>f :YcmCompleter GoTo<CR>
-nnoremap <leader>g :YcmCompleter GoTo<CR>
+" nnoremap <leader>f :YcmCompleter GoTo<CR>
+" nnoremap <leader>g :YcmCompleter GoTo<CR>
 
 " This command attempts to find all of the references within the project to
 " the identifier under the cursor and populates the quickfix list with those locations
@@ -183,7 +198,6 @@ set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-Plugin 'gmarik/Vundle.vim'
 """ 安装自己的插件
 
 " 快速移动神器和模糊搜索
@@ -246,11 +260,15 @@ Plugin 'vim-scripts/indentpython.vim'
 "异步语法检查
 Plugin 'w0rp/ale'
 
-" python 格式化工具
-Plugin 'google/yapf'
+" html movation
+Plugin 'mattn/emmet-vim'
 
-" Vim python-mode. PyLint, Rope, Pydoc, breakpoints from box
-Plugin 'python-mode/python-mode'
+" python 自动补全插件
+Plugin 'davidhalter/jedi-vim'
+
+" For vue
+Plugin 'posva/vim-vue'
+
 
 """ 结束Vundle配置
 call vundle#end()

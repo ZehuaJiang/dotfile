@@ -1,0 +1,56 @@
+"基本设置
+let mapleader="'"
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+set showmode
+set number
+set clipboard+=unnamed
+
+"easymotion
+map s :action AceAction<CR>
+
+"文件操作
+nnoremap q :q<CR>
+nnoremap mr :action RecentFiles<CR>
+
+"tab操作
+nnoremap ma :action PreviousTab<CR>
+nnoremap md :action NextTab<CR>
+
+"全屏操作
+nnoremap mf :action ToggleFullScreen<CR>
+nnoremap ms :action ActivateStructureToolWindow<CR>
+nnoremap mp :action ActivateProjectToolWindow<CR>
+nnoremap mt :action ActivateTerminalToolWindow<CR>
+nnoremap mh :action HideAllWindows<CR>
+nnoremap mx :action ActivateRunToolWindow<CR>
+nnoremap me :action RunClass<CR>
+
+"分屏操作
+nnoremap <leader>v :action SplitVertically<CR>
+nnoremap <leader>h :action SplitHorizontally<CR>
+
+"窗口操作
+nnoremap <leader>a <C-w>h
+nnoremap <leader>s <C-w>j
+nnoremap <leader>w <C-w>k
+nnoremap <leader>d <C-w>l
+nnoremap <Leader>f <C-]>
+nnoremap <Leader>b <C-T>
+
+"代码导航
+nnoremap gd :action GotoDeclaration<CR>
+nnoremap gi :action GotoImplementation<CR>
+nnoremap gj :action Back<CR>
+nnoremap gk :action Forward<CR>
+nnoremap gu :action FindUsages<CR>
+
+
+"代码注释
+nnoremap gcc :action CommentByLineComment<CR>
+nnoremap gc :action CommentGroup<CR>
+
+"搜索设置
+nnoremap ga :action SearchEverywhere<CR>
